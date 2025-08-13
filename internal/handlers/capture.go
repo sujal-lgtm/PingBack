@@ -26,15 +26,15 @@ func (h *CaptureHandler) Capture(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if event.Payload == "" {
-		utils.Error("Empty payload in capture request")
-		utils.WriteJSONError(w, http.StatusBadRequest, "Payload cannot be empty")
-		return
-	}
-
 	if event.Source == "" {
 		utils.Error("Empty source in capture request")
 		utils.WriteJSONError(w, http.StatusBadRequest, "Source cannot be empty")
+		return
+	}
+
+	if event.Payload == "" {
+		utils.Error("Empty payload in capture request")
+		utils.WriteJSONError(w, http.StatusBadRequest, "Payload cannot be empty")
 		return
 	}
 
